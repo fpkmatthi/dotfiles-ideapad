@@ -1,0 +1,118 @@
+# NOTE: Number keys on AZERTY keyboard are marked as
+# {ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
+
+# Programs {{{
+super + Return
+    $TERMINAL
+
+super + m
+    $TERMINAL -e ncmpcpp
+
+super + w
+    $TERMINAL -e nvim -c VimwikiIndex
+
+super + c
+    $TERMINAL -e calcurse
+
+super + r
+    $TERMINAL -e ranger
+
+super + b
+    $BROWSER
+
+super + n
+    $TERMINAL -e neomutt
+# }}}
+
+# Menus, volume, brightness {{{
+super + d
+    $HOME/.config/rofi/bin/appmenu
+
+super + x
+    $HOME/.config/rofi/bin/powermenu
+
+super + shift + m
+    $HOME/.config/rofi/bin/mpdmenu
+
+super + shift + x
+    $HOME/.config/bspwm/scripts/lock.sh
+
+# screenshot
+super + shift + p
+    $HOME/.config/rofi/bin/scrotmenu
+
+super + shift + n
+    $HOME/.config/rofi/bin/networkmenu
+
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    $HOME/.config/sxhkd/scripts/volume-notification.sh {up,down,mute}
+
+XF86MonBrightness{Up,Down}
+    $HOME/.config/sxhkd/scripts/brightness-notification.sh {up,down}
+# }}}
+
+# Bspwm hotkeys {{{
+# quit/restart bspwm
+super + shift + {e,r}
+    bspc {quit,wm -r}
+
+# force quit
+super + shift + q
+    bspc node -k
+
+# close normally
+alt + F4
+    bspc node -c
+
+# make sxhkd reload its configuration files:
+super + Escape
+    pkill -USR1 -x sxhkd
+# }}}
+
+# Node state/flags {{{
+# set the window state
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# }}}
+
+# Focus/swap {{{
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+# focus the last node/desktop
+super + Tab
+    bspc desktop -f last
+
+# focus or send to the given desktop
+super + {_,shift + }{ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+# }}}
+
+# Preselect {{{
+# preselect the direction
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
+    bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+    bspc node -p cancel
+
+# split horizontal, split vertical, or cancel
+super + ctrl + {v,shift+v,shift+Escape}
+    bspc node -p {south,east,cancel}
+# }}}
+
+# Move/resize {{{
+# expand window
+super + shift + ctrl + {y,u,i,o}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract window
+super + {y,u,i,o}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+# }}}

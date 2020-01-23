@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# Launch general apps (NOTE: order matters) {{{
+setxkbmap be
+sxhkd &
+xrdb $HOME/.Xresources
+wal -i $HOME/.config/deathstar-landscape.png -a 70
+$HOME/.config/polybar/launch.sh
+$HOME/.config/compton/launch.sh
+$HOME/.config/redshift/launch.sh
+dunst &
+# }}}
+
+# Launch trivial apps in the background {{{
+xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" &
+optimus-manager-qt &
+# }}}
+
+# Main bspwm config {{{
+bspc monitor $MONITOR -d I II III IV V VI VII
+
+xsetroot -cursor_name left_ptr
+
+bspc config border_width         2
+bspc config window_gap           12
+bspc config split_ratio          0.50
+bspc config top_padding          45
+bspc config bottom_padding       10
+bspc config left_padding         10
+bspc config right_padding        10
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config paddingless_monocle  false
+bspc config single_monocle       true
+bspc config focus_by_distance    true
+bspc config history_aware_focus  true
+bspc config ignore_ewmh_focus    false
+# }}}
+
+# Application rules {{{
+bspc rule -a Chromium desktop='^2' follow=off
+bspc rule -a discord desktop='^4' follow=off #state=fullscreen
+bspc rule -a Vlc desktop='^5' follow=on
+bspc rule -a "Gimp-2.10" desktop='^6' follow=on
+# }}}
+
+# Border color {{{
+source "$HOME/.cache/wal/colors.sh"
+bspc config normal_border_color $color0
+bspc config focused_border_color $color1
+bspc config active_border_color $color1
+bspc config urgent_border_color $color7
+bspc config presel_feedback_color $color1
+# }}}
+

@@ -1,0 +1,18 @@
+configuration {
+    show-icons:             true;
+    font:                   "Hack Nerd Font 12";
+    cycle:                  true;
+    hide-scrollbar:         true;
+    disable-history:        false;
+    modi:                   "drun";
+    display-drun:           "apps";
+    columns:                2;
+    kb-mode-previous:       "Control+h";
+    kb-row-down:            "Control+j";
+    kb-row-up:              "Control+k";
+    kb-mode-next:           "Control+l";
+    kb-accept-entry:        "Return,KP_Enter";
+    kb-remove-to-eol:       "";
+    kb-remove-char-back:    "BackSpace,Shift+BackSpace";
+
+}
