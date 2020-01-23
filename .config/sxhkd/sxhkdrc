@@ -109,10 +109,10 @@ super + ctrl + {v,shift+v,shift+Escape}
 
 # Move/resize {{{
 # expand window
-super + shift + ctrl + {y,u,i,o}
+super + shift + ctrl + {u,i,o,p}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract window
-super + {y,u,i,o}
+super + {u,i,o,p}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 # }}}
