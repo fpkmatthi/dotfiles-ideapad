@@ -140,13 +140,6 @@ font-4 = "Hack Nerd Font:pixelsize=18;7"
 ; }}}
 
 ; Tray {{{
-tray-position = left
-tray-padding = 2
-tray-maxsize = 24
-;tray-offset-x = 21%
-tray-foreground = ${colors.xcolor7}
-tray-background = ${colors.xcolor1}
-
 wm-restack = bspwm
 ;override-redirect = true
 scroll-up = bspwm-desknext
