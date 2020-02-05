@@ -14,10 +14,26 @@ dunst &
 # Launch trivial apps in the background {{{
 xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" &
 optimus-manager-qt &
+nm-applet &
 # }}}
 
 # Main bspwm config {{{
-bspc monitor $MONITOR -d I II III IV V VI VII
+## if 1 monitor, alles op 1 monitor
+## else, if 2 monitors, split evenly
+monitors=$(mons | grep 'Monitors' | cut -d: -f2 | tr -d '[:space:]')
+if [ "${monitors}" -eq 1 ]; then
+  bspc monitor $MONITOR -d I II III IV V VI
+elif [ "${monitors}" -eq 2 ]; then
+  second_monitor=$(mons | grep '1:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  bspc monitor $MONITOR -d I II III IV V
+  bspc monitor "${second_monitor}" -d VI VII VIII IX X
+elif [ "${monitors}" -eq 3 ]; then
+  second_monitor=$(mons | grep '1:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  third_monitor=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  bspc monitor $MONITOR -d I II III IV V VI
+  bspc monitor "${second_monitor}" -d V VI VII
+  bspc monitor "${third_monitor}" -d VIII IX X
+fi
 
 xsetroot -cursor_name left_ptr
 

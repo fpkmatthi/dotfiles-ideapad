@@ -87,6 +87,10 @@ super + Tab
 # focus or send to the given desktop
 super + {_,shift + }{ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
     bspc {desktop -f,node -d} '^{1-9,10}'
+
+# rotate nodes
+super + {v, shift + v}
+    bspc node @/ -R {90,270}
 # }}}
 
 # Preselect {{{
