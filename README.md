@@ -1,3 +1,3 @@
 # ~/.dotfiles
 
-![desktop](.github/dekstop.png)
+![desktop](.github/desktop.png)
