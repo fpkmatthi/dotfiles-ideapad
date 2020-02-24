@@ -13,14 +13,14 @@ send_notification() {
 
   icon_name="/usr/share/icons/Papirus-Dark/16x16/apps/preferences-system-brightness-lock.svg"
 
-  bar=$(seq -s "─" $((${brightness}/4)) | sed 's/[0-9]//g')
+  bar=$(seq -s "─" $((${brightness}/7)) | sed 's/[0-9]//g')
 
   dunstify "     ""$bar" -i "$icon_name" -t 2000 -h int:value:"${brightness}" -h string:synchronous:"$bar" --replace=555
 }
 
 increase_brightness() {
   if [ -f /usr/bin/light ]; then
-    light -A 4
+    light -A 7
   elif [ -f /usr/bin/xbacklight ]; then
     xbacklight -inc 7
   fi
@@ -29,7 +29,7 @@ increase_brightness() {
 
 decrease_brightness() {
   if [ -f /usr/bin/light ]; then
-    light -U 4
+    light -U 7
   elif [ -f /usr/bin/xbacklight ]; then
     xbacklight -dec 7
   fi

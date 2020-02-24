@@ -28,7 +28,7 @@ send_notification() {
           icon_name="/usr/share/icons/Papirus-Dark/16x16/panel/audio-volume-high.svg"
         fi
       fi
-      bar=$(seq -s "─" $((${volume}/4)) | sed 's/[0-9]//g')
+      bar=$(seq -s "─" $((${volume}/7)) | sed 's/[0-9]//g')
       dunstify "${volume}""     ""$bar" -i "$icon_name" -t 2000 -h int:value:"${volume}" -h string:synchronous:"$bar" --replace=555
     fi
   fi
@@ -36,13 +36,13 @@ send_notification() {
 
 increase_volume() {
   amixer set Master on > /dev/null
-  amixer sset Master 5%+ > /dev/null
+  amixer sset Master 7%+ > /dev/null
   send_notification
 }
 
 decrease_volume() {
   amixer set Master on > /dev/null
-  amixer sset Master 5%- > /dev/null
+  amixer sset Master 7%- > /dev/null
   send_notification
 }
 
@@ -50,12 +50,12 @@ case $1 in
   up)
     # Set the volume on (if it was muted)
     amixer set Master on > /dev/null
-    amixer sset Master 5%+ > /dev/null
+    amixer sset Master 7%+ > /dev/null
     send_notification
     ;;
   down)
     amixer set Master on > /dev/null
-    amixer sset Master 5%- > /dev/null
+    amixer sset Master 7%- > /dev/null
     send_notification
     ;;
   mute)
