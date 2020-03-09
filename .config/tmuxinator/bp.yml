@@ -1,0 +1,14 @@
+# /home/fpkmatthi/.config/tmuxinator/bp.yml
+
+name: Bachelorproef
+root: ~/Documents/wiki/src/Bachelor_3/S2/BP/bachproef-latex-sjabloon/bachproef/
+
+windows:
+  - Main Latex doc: vim bachproef-tin.tex
+  - Bibliography: vim bachproef-tin.bib
+  - voorwoord: vim voorwoord.tex
+  - samenvatting: vim samenvatting.tex
+  - inleiding: vim inleiding.tex
+  - standvanzaken: vim standvanzaken.tex
+  - methodologie: vim methodologie.tex
+  - conclusie: vim conclusie.tex

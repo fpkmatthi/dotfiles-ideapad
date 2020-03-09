@@ -1,0 +1,17 @@
+# /home/fpkmatthi/.config/tmuxinator/portfolio.yml
+
+name: portfolio
+root: ~/Documents/wiki/src/DevOps/Docker/Portfolio/
+
+windows:
+  - Wiki: vim Portfolio.wiki
+  - Hugo_server: 
+      root: ~/Documents/wiki/src/DevOps/Docker/Portfolio/fpkmatthi.github.io/
+      panes:
+        - docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo hugo_portfolio hugo server -D --bind=0.0.0.0
+        # - docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo hugo_portfolio hugo server -w --bind=0.0.0.0
+  - Posts:
+      root: ~/Documents/wiki/src/DevOps/Docker/Portfolio/fpkmatthi.github.io/content/posts/
+      layout: main-vertical
+      panes:
+        - vim ./
